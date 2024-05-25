@@ -1,17 +1,21 @@
-import './Navbar.css'
-import 'bootstrap'
+import './Navbar.css';
+import 'bootstrap';
+import { Link } from 'react-router-dom';
 
 function Navbar () {
     return (
         <nav className="navBar">
-            <a href="#">logo</a>
+            <Link to="/">
+                <img id="homepage-logo" src="logo.png" alt="GeoSafe logo" />
+            </Link>
             <div className="topnav-right">
-                <a href="#stats">Stats</a>
-                <a href="#tips">Useful Tips</a>
-                <a href="#urgent-support">Urgent Support</a>
+                <Link to="/"className="link">Home</Link>
+                <Link to="/stats"className="link">Stats</Link>
+                <Link to="/tips" className="link">Useful Tips</Link>
+                <Link to="/urgent-support" id="urgent-button">Urgent Support</Link>
             </div>
         </nav>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;

@@ -28,9 +28,18 @@
 #arrow {
     position: absolute;
     top: calc(100vh - 250px);
-    left: calc(50vw - (77.1167px / 2));
+    left: calc((75vw / 2) - (77.1167px / 2));
     max-width: 50vw;
     max-height: 5vh;
     width: auto;
     height: auto;
+}
+
+#arrow:hover {
+    opacity: 0.8;
+}
+
+h1, p {
+    color: rgb(3,48,118);
+    max-width: 75vw;
 }
