@@ -4,10 +4,10 @@
     180deg,
     rgba(255, 189, 132, 0.1),
     rgba(255, 189, 132, 0.79)
-    );
+  );
   background-attachment: fixed;
   margin: 0;
-  font-family: 'Itim', Verdana, Arial, sans-serif;
+  font-family: "Itim", Verdana, Arial, sans-serif;
 }
 
 .App-logo {

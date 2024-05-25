@@ -1,45 +1,46 @@
 .home {
-    display:contents;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 40px;
-    bottom: 20px;
-    width: 100%;
+  display: contents;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 40px;
+  bottom: 20px;
+  width: 100%;
 }
 
 .welcome {
-    height: calc(100vh - 58px);
+  height: calc(100vh - 58px);
 }
 
 .home-content {
-    position: relative;
-    top: calc(100vh - (553.217px * 1.5))
+  position: relative;
+  top: calc(100vh - (553.217px * 1.5));
 }
 
 #logo {
-    max-width: 25vw;
-    max-height: 25vh;
-    width: auto;
-    height: auto;
+  max-width: 25vw;
+  max-height: 25vh;
+  width: auto;
+  height: auto;
 }
 
 #arrow {
-    position: absolute;
-    top: calc(100vh - 250px);
-    left: calc((75vw / 2) - (77.1167px / 2));
-    max-width: 50vw;
-    max-height: 5vh;
-    width: auto;
-    height: auto;
+  position: absolute;
+  top: calc(100vh - 250px);
+  left: calc((75vw / 2) - (77.1167px / 2));
+  max-width: 50vw;
+  max-height: 5vh;
+  width: auto;
+  height: auto;
 }
 
 #arrow:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
-h1, p {
-    color: rgb(3,48,118);
-    max-width: 75vw;
+h1,
+p {
+  color: rgb(3, 48, 118);
+  max-width: 75vw;
 }
