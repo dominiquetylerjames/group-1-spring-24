@@ -2,12 +2,12 @@
   text-align: centre;
   background: linear-gradient(
     180deg,
-    rgba(255, 189, 132, 0.1),
-    rgba(255, 189, 132, 0.79)
-    );
+    rgba(44, 7, 3, 0.05),
+    rgba(218, 159, 147, 0.79)
+  );
   background-attachment: fixed;
   margin: 0;
-  font-family: 'Itim', Verdana, Arial, sans-serif;
+  font-family: "Tahoma", Verdana, sans-serif;
 }
 
 .App-logo {
