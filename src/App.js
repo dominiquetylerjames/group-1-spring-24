@@ -4,7 +4,6 @@ import Navbar from "./component/Navbar";
 import Home from "./component/Home";
 import Facts from "./component/Facts";
 import CrimeStats from "./component/CrimeStats";
-
 {
   /* These are how comments are made in JSX! */
 }
@@ -26,7 +25,7 @@ function App() {
                   </>
                 }
               ></Route>
-              <Route path="/stats" element={<p>CrimeStats /</p>}></Route>
+              <Route path="/stats" element={<CrimeStats />}></Route>
               <Route path="/tips" element={<p>test tips</p>}></Route>
               <Route
                 path="/urgent-support"

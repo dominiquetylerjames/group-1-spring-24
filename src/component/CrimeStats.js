@@ -115,7 +115,7 @@ const CrimeStats = () => {
       r: {
         pointLabels: {
           font: {
-            size: 14,
+            size: 10,
           },
         },
         ticks: {
@@ -131,7 +131,7 @@ const CrimeStats = () => {
         position: "bottom",
         labels: {
           font: {
-            size: 30,
+            size: 15,
             color: "white",
           },
           color: "white",
@@ -147,14 +147,14 @@ const CrimeStats = () => {
           size: 14,
         },
         titleFont: {
-          size: 16,
+          size: 10,
         },
       },
       title: {
         display: true,
         text: "Number of crimes within the last month",
         font: {
-          size: 50,
+          size: 30,
         },
         color: "white",
         padding: {
@@ -170,7 +170,7 @@ const CrimeStats = () => {
           return value > 80 ? value : null;
         },
         font: {
-          size: 35,
+          size: 12,
         },
       },
     },
@@ -179,6 +179,10 @@ const CrimeStats = () => {
   return (
     <div className="p-4">
       <h1 className="title">Crime Statistics for Cardiff</h1>
+
+      <div className="chart-container">
+        <PolarArea data={data} options={options} />
+      </div>
       <div className="chart-description">
         Crime Statistics Data
         <a
@@ -188,9 +192,6 @@ const CrimeStats = () => {
         >
           Source
         </a>
-      </div>
-      <div className="chart-container">
-        <PolarArea data={data} options={options} />
       </div>
     </div>
   );
