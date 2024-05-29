@@ -1,5 +1,5 @@
 .home {
-  display: contents;
+  display:contents;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -11,11 +11,13 @@
 
 .welcome {
   height: calc(100vh - 58px);
+  display: flex;
+  justify-content: center;
 }
 
 .home-content {
   position: relative;
-  top: calc(100vh - (553.217px * 1.5));
+  /* top: calc(100vh - (553.217px * 1.5));*/
 }
 
 #logo {
@@ -26,6 +28,7 @@
 }
 
 #arrow {
+  display:none;
   position: absolute;
   top: calc(100vh - 250px);
   left: calc((75vw / 2) - (77.1167px / 2));
@@ -39,8 +42,11 @@
   opacity: 0.8;
 }
 
-h1,
-p {
+.home-content {
   color: rgb(3, 48, 118);
   max-width: 75vw;
+}
+
+p {
+  color: rgb(3, 48, 118);
 }
