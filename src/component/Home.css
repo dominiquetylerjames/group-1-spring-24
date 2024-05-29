@@ -1,5 +1,5 @@
 .home {
-  display: contents;
+  display:contents;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -11,6 +11,8 @@
 
 .welcome {
   height: calc(100vh - 58px);
+  display: flex;
+  justify-content: center;
 }
 
 .home-content {
@@ -39,8 +41,11 @@
   opacity: 0.8;
 }
 
-h1,
-p {
+.home-content {
   color: rgb(3, 48, 118);
   max-width: 75vw;
+}
+
+p {
+  color: rgb(3, 48, 118);
 }
