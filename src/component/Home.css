@@ -17,7 +17,7 @@
 
 .home-content {
   position: relative;
-  top: calc(100vh - (553.217px * 1.5));
+  /* top: calc(100vh - (553.217px * 1.5));*/
 }
 
 #logo {
@@ -28,6 +28,7 @@
 }
 
 #arrow {
+  display:none;
   position: absolute;
   top: calc(100vh - 250px);
   left: calc((75vw / 2) - (77.1167px / 2));
