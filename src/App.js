@@ -4,6 +4,7 @@ import Navbar from "./component/Navbar";
 import Home from "./component/Home";
 import Facts from "./component/Facts";
 import CrimeStats from "./component/CrimeStats";
+import UrgentSupport from "./component/UrgentSupport";
 {
   /* These are how comments are made in JSX! */
 }
@@ -29,7 +30,7 @@ function App() {
               <Route path="/tips" element={<p>test tips</p>}></Route>
               <Route
                 path="/urgent-support"
-                element={<p>test urgent support</p>}
+                element={<UrgentSupport />}
               ></Route>
             </Routes>
           </div>
