@@ -5,9 +5,9 @@ import Home from "./component/Home";
 import Facts from "./component/Facts";
 import CrimeStats from "./component/CrimeStats";
 import UrgentSupport from "./component/UrgentSupport";
-{
-  /* These are how comments are made in JSX! */
-}
+import MapComponent from "./component/MapComponent";
+
+// Use {/* */} for comments in jsx
 
 function App() {
   return (
@@ -16,11 +16,11 @@ function App() {
         <header className="App-header">
           <Navbar />
           <div className="content">
-            <Routes>
+            <Routes> {/* This is where navigation (aka routing) is managed */}
               <Route
                 path="/"
                 element={
-                  <>
+                  <> {/* Displays one component above the other. 2 components because they use very different styling */}
                     <Home />
                     <Facts />
                   </>
