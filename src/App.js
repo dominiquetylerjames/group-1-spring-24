@@ -25,13 +25,11 @@ function App() {
                     <Facts />
                   </>
                 }
-              ></Route>
-              <Route path="/stats" element={<CrimeStats />}></Route>
-              <Route path="/tips" element={<p>test tips</p>}></Route>
-              <Route
-                path="/urgent-support"
-                element={<UrgentSupport />}
-              ></Route>
+              />
+              <Route path="/stats" element={<CrimeStats />} />
+              <Route path="/map" element={<MapComponent />} />
+              <Route path="/tips" element={<p>test tips</p>} />
+              <Route path="/urgent-support" element={<UrgentSupport />}></Route>
             </Routes>
           </div>
         </header>
