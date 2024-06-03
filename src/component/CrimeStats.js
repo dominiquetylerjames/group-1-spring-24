@@ -7,8 +7,11 @@ import {
   Tooltip,
   Legend,
   Title,
+  CategoryScale,
+  LinearScale,
+  BarElement,
 } from "chart.js";
-import { PolarArea } from "react-chartjs-2";
+import { PolarArea, Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import "./CrimeStats.css";
 
@@ -18,13 +21,40 @@ ChartJS.register(
   Tooltip,
   Legend,
   Title,
+  CategoryScale,
+  LinearScale,
+  BarElement,
   ChartDataLabels
 );
 
 const CrimeStats = () => {
   const [crimes, setCrimes] = useState([]);
+  const [monthlyCrimes, setMonthlyCrimes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [latestMonth, setLatestMonth] = useState("");
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const fetchWithRetry = async (url, retries = 1, delayMs = 10) => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await axios.get(url);
+        return response.data;
+      } catch (error) {
+        if (i < retries - 1) {
+          console.warn(`Retrying... (${i + 1})`);
+          await delay(delayMs);
+        } else {
+          console.error(
+            `Failed to fetch data from ${url}:`,
+            error.response || error.message
+          );
+          return [];
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     const latitude = 51.4816;
@@ -32,12 +62,50 @@ const CrimeStats = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        // Fetch data for the latest month
+        const latestResponse = await fetchWithRetry(
           `https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}`
         );
-        setCrimes(response.data);
+        setCrimes(latestResponse);
+
+        // Get the date of the latest data
+        if (latestResponse.length > 0) {
+          const latestDate = new Date(latestResponse[0].month);
+          const month = latestDate.toLocaleString("default", { month: "long" });
+          const year = latestDate.getFullYear();
+          setLatestMonth(`${month} ${year}`);
+        }
+
+        // Fetch data for the past 12 months for the bar chart
+        const monthlyResponses = [];
+        for (let i = 0; i < 12; i++) {
+          const date = new Date();
+          date.setMonth(date.getMonth() - i);
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, "0");
+          const formattedDate = `${year}-${month}`;
+          const monthlyResponse = await fetchWithRetry(
+            `https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}&date=${formattedDate}`
+          );
+          monthlyResponses.push({ date: formattedDate, data: monthlyResponse });
+          //await delay(50); // Adding a delay between requests to prevent rate limiting
+        }
+
+        const monthlyCrimeCounts = monthlyResponses.map((response, index) => {
+          const date = new Date();
+          date.setMonth(date.getMonth() - index);
+          const month = date.toLocaleString("default", { month: "short" });
+          const year = date.getFullYear();
+          return {
+            month: `${month} ${year}`,
+            count: response.data.length,
+          };
+        });
+
+        setMonthlyCrimes(monthlyCrimeCounts.reverse());
       } catch (error) {
-        setError(error.message);
+        console.error("Error fetching data:", error.response || error.message);
+        setError("Failed to fetch data. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -49,6 +117,7 @@ const CrimeStats = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  // Processing data for the PolarArea chart
   const crimeCategories = crimes.reduce((acc, crime) => {
     acc[crime.category] = (acc[crime.category] || 0) + 1;
     return acc;
@@ -152,7 +221,7 @@ const CrimeStats = () => {
       },
       title: {
         display: true,
-        text: "Number of crimes within the last month",
+        text: `Number of crimes in ${latestMonth}`,
         font: {
           size: 30,
         },
@@ -166,12 +235,82 @@ const CrimeStats = () => {
         color: "white",
         anchor: "end",
         align: "start",
-        formatter: (value, context) => {
+        formatter: (value) => {
           return value > 80 ? value : null;
         },
         font: {
           size: 12,
         },
+      },
+    },
+  };
+
+  const monthlyData = {
+    labels: monthlyCrimes.map((item) => item.month),
+    datasets: [
+      {
+        label: "Number of Crimes per Month",
+        data: monthlyCrimes.map((item) => item.count),
+        backgroundColor: "rgba(54, 162, 235, 0.5)", // Blue
+        borderColor: "rgba(54, 162, 235, 1)",
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const monthlyOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: {
+          color: "#e9e9e9",
+        },
+        ticks: {
+          font: {
+            size: 14,
+          },
+          color: "white",
+        },
+      },
+      y: {
+        grid: {
+          color: "#e9e9e9",
+        },
+        ticks: {
+          font: {
+            size: 14,
+          },
+          color: "white",
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: {
+          font: {
+            size: 15,
+            color: "white",
+          },
+          color: "white",
+        },
+      },
+      title: {
+        display: true,
+        text: "Total Number of Crimes per Month for the Past Year",
+        font: {
+          size: 30,
+        },
+        color: "white",
+        padding: {
+          top: 10,
+          bottom: 30,
+        },
+      },
+      datalabels: {
+        color: "white",
+        anchor: "top",
       },
     },
   };
@@ -182,6 +321,9 @@ const CrimeStats = () => {
 
       <div className="chart-container">
         <PolarArea data={data} options={options} />
+      </div>
+      <div className="chart-container">
+        <Bar data={monthlyData} options={monthlyOptions} />
       </div>
       <div className="chart-description">
         Crime Statistics Data
