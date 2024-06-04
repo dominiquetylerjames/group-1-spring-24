@@ -15,6 +15,9 @@ function Navbar() {
         <Link to="/stats" className="link">
           Stats
         </Link>
+        <Link to="/map" className="link">
+          Map
+        </Link>
         <Link to="/tips" className="link">
           Useful Tips
         </Link>
