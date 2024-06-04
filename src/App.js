@@ -1,31 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
-import Navbar from './component/Navbar'
-import Home from './component/Home'
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./component/Navbar";
 import Footer from './component/Footer';
+import Home from "./component/Home";
+import Facts from "./component/Facts";
+import CrimeStats from "./component/CrimeStats";
+import UrgentSupport from "./component/UrgentSupport";
+import MapComponent from "./component/MapComponent";
+import SafetyTips from "./component/SafetyTips";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* These are how comments are made in JSX! */}
-        <Navbar />
-        <Home />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Navbar />
+          <div className="content">
+            <Routes> {/* This is where navigation (aka routing) is managed */}
+              <Route
+                path="/"
+                element={
+                  <> {/* Displays one component above the other. 2 components because they use very different styling */}
+                    <Home />
+                    <Facts />
+                  </>
+                }
+              />
+              <Route path="/stats" element={<CrimeStats />} />
+              <Route path="/map" element={<MapComponent />} />
+              <Route path="/tips" element={<SafetyTips />} />
+              <Route path="/urgent-support" element={<UrgentSupport />}></Route>
+            </Routes>
+          </div>
+        </header>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

@@ -1,0 +1,10 @@
+.facts {
+    display:contents;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40px;
+    bottom: 20px;
+    width: 100%;
+}
