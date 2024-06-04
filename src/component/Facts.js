@@ -7,9 +7,6 @@ function Facts () {
     return (
         <div className="facts">
             <p>Placeholder text</p>
-            <div id="spinning-logo">
-                <img src={logo} className="App-logo" alt="logo" />
-            </div>
             <p>
             Edit <code>src/App.js</code> and save to reload.
             </p>

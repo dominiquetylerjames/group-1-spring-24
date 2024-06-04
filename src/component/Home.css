@@ -13,11 +13,13 @@
   height: calc(100vh - 58px);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .home-content {
   position: relative;
-  /* top: calc(100vh - (553.217px * 1.5));*/
+  padding-bottom: 50px;
+  /* top: calc(100vh - (553.217px * 1.5));*/ /* Disabled due to screen size issues */
 }
 
 #logo {
@@ -28,7 +30,7 @@
 }
 
 #arrow {
-  display:none;
+  display:none; /* Display: none to hide the arrow until we find a way to make it work with smaller screen sizes */
   position: absolute;
   top: calc(100vh - 250px);
   left: calc((75vw / 2) - (77.1167px / 2));
@@ -42,11 +44,11 @@
   opacity: 0.8;
 }
 
-.home-content {
+.home-content { /* Sets the heading font to the theme's navy colour without affecting other h1 tags */
   color: rgb(3, 48, 118);
   max-width: 75vw;
 }
 
-p {
+p { /* Sets the default paragraph font to the theme's navy colour */
   color: rgb(3, 48, 118);
 }
