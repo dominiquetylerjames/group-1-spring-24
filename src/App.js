@@ -6,8 +6,7 @@ import Facts from "./component/Facts";
 import CrimeStats from "./component/CrimeStats";
 import UrgentSupport from "./component/UrgentSupport";
 import MapComponent from "./component/MapComponent";
-
-// Use {/* */} for comments in jsx
+import SafetyTips from "./component/SafetyTips";
 
 function App() {
   return (
@@ -28,7 +27,7 @@ function App() {
               />
               <Route path="/stats" element={<CrimeStats />} />
               <Route path="/map" element={<MapComponent />} />
-              <Route path="/tips" element={<p>test tips</p>} />
+              <Route path="/tips" element={<SafetyTips />} />
               <Route path="/urgent-support" element={<UrgentSupport />}></Route>
             </Routes>
           </div>
