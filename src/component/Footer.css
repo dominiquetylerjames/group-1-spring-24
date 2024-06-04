@@ -1,0 +1,50 @@
+.App-footer {
+    background-color: #128;
+    color: #fff;
+    padding: 20px 0;
+    width: 100%;
+    position: fixed;       /* Keeping this fixed so it stays at the bottom */
+    bottom: 0;             /* Making sure it is aligned at the bottom */
+    left: 0;
+  }
+  
+  .footer-container {
+    display: flex;          
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+  
+  .footer-section {
+    flex: 1;               
+    padding: 10px;
+  }
+  
+  .footer-section h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .footer-section p,
+  .footer-section ul,
+  .footer-section a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #bbb;
+    text-decoration: none;
+  }
+  
+  .footer-section a:hover {
+    color: #fff;
+  }
+  
+  .footer-section ul {
+    padding-left: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
