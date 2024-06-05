@@ -1,46 +1,90 @@
-.home {
-  display: contents;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 40px;
-  bottom: 20px;
-  width: 100%;
-}
-
-.welcome {
-  height: calc(100vh - 58px);
+html{
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
 
 .home-content {
-  position: relative;
-  top: calc(100vh - (553.217px * 1.5));
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+  color: #00028c; 
+
 }
 
-#logo {
-  max-width: 25vw;
+#logo{
   max-height: 25vh;
-  width: auto;
-  height: auto;
+  max-width: 25vh;
+  margin-top: 30px;
 }
 
-#arrow {
-  position: absolute;
-  top: calc(100vh - 250px);
-  left: calc((75vw / 2) - (77.1167px / 2));
-  max-width: 50vw;
-  max-height: 5vh;
-  width: auto;
-  height: auto;
+.home {
+  scroll-snap-align: start;
+  height: 100vh;
 }
 
-#arrow:hover {
+.homeIntro{
+  color: rgb(3, 48, 118);
+  line-height: 28px;
+}
+
+#scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(255, 102, 0);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#scrollToTop:hover {
   opacity: 0.8;
 }
 
-h1,
-p {
-  color: rgb(3, 48, 118);
-  max-width: 75vw;
+@media only screen and (max-width: 785px) {
+  #logo{
+    max-height: 20vh;
+    max-width: 20vh;
+    margin-top: 30px;
+  }
+  h1{
+    font-size: 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #logo{
+    max-height: 10vh;
+    max-width: 10vh;
+    margin-top: 30px;
+  }
+
+  h1{
+    font-size: 1.3rem;
+  }
+
+  .home-content{
+    width: 100%;
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  h1{
+      font-size: 1.1rem;
+  }
+  .home-content{
+      font-size: 0.9rem; 
+      padding: 0px;   
+  }
+  #logo{
+    margin-top: 10px;
+  }
+
 }
