@@ -1,10 +1,63 @@
-.facts {
-    display:contents;
+
+.factsContainer {
     text-align: center;
-    justify-content: center;
+    width: 80%;
+    margin: auto;
+    color: #00028c; 
+
+}
+
+h2{
+    margin-bottom: -50px;
+    text-decoration: underline;
+
+}
+.allFacts {
+    text-align: center;
+}
+  
+.factsDiv {
+    scroll-snap-align: start;
+    height: 100vh; 
+    margin: auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 40px;
-    bottom: 20px;
-    width: 100%;
+    justify-content: center;
+    line-height: 30px;
+
+}
+  
+.factParagraph{
+    box-shadow: 10px 10px 10px -10px #425eac;
+    border-radius: 6px;
+    padding: 30px;
+}
+
+@media only screen and (max-width: 500px) {
+    h2{
+        font-size: 1.5rem;
+        margin-bottom: -50px;
+    }
+    .factsContainer{
+        width: 100%;
+        font-size: 1rem;
+
+    }
+
+}
+
+@media only screen and (max-width: 350px) {
+    h2{
+        font-size: 1.1rem;
+    }
+    .factsContainer{
+        font-size: 0.8rem; 
+        padding: 0px;   
+    }
+    .factParagraph{
+        margin-top: 20px;
+        padding: 10px;
+    }
+
 }
