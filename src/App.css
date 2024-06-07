@@ -5,7 +5,7 @@
     rgba(255, 189, 132, 0.1),
     rgba(255, 189, 132, 0.79)
   );
-  background-attachment: fixed;  /* Sets the static gradient background colour */
+  background-attachment: fixed; /* Sets the static gradient background colour */
   margin: 0;
   font-family: "Itim", Verdana, Arial, sans-serif; /* Determines the default font for the app - we opted for a slightly playful, handwritten script, e.g. Mind website */
 }

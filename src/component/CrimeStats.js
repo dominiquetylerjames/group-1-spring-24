@@ -34,25 +34,16 @@ const CrimeStats = () => {
   const [error, setError] = useState(null);
   const [latestMonth, setLatestMonth] = useState("");
 
-  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-  const fetchWithRetry = async (url, retries = 1, delayMs = 10) => {
-    for (let i = 0; i < retries; i++) {
-      try {
-        const response = await axios.get(url);
-        return response.data;
-      } catch (error) {
-        if (i < retries - 1) {
-          console.warn(`Retrying... (${i + 1})`);
-          await delay(delayMs);
-        } else {
-          console.error(
-            `Failed to fetch data from ${url}:`,
-            error.response || error.message
-          );
-          return [];
-        }
-      }
+  const fetchData = async (url) => {
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      console.error(
+        `Failed to fetch data from ${url}:`,
+        error.response || error.message
+      );
+      return [];
     }
   };
 
@@ -60,39 +51,41 @@ const CrimeStats = () => {
     const latitude = 51.4816;
     const longitude = -3.1791;
 
-    const fetchData = async () => {
+    const fetchDataForCharts = async () => {
       try {
         // Fetch data for the latest month
-        const latestResponse = await fetchWithRetry(
+        const latestResponse = await fetchData(
           `https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}`
         );
         setCrimes(latestResponse);
 
         // Get the date of the latest data
+        let latestDate;
         if (latestResponse.length > 0) {
-          const latestDate = new Date(latestResponse[0].month);
+          latestDate = new Date(latestResponse[0].month);
           const month = latestDate.toLocaleString("default", { month: "long" });
           const year = latestDate.getFullYear();
           setLatestMonth(`${month} ${year}`);
+        } else {
+          latestDate = new Date();
         }
 
-        // Fetch data for the past 12 months for the bar chart
-        const monthlyResponses = [];
-        for (let i = 0; i < 12; i++) {
-          const date = new Date();
+        // Fetch data for the past 12 months from the latest available data
+        const fetchMonthlyData = Array.from({ length: 6 }, (_, i) => {
+          const date = new Date(latestDate);
           date.setMonth(date.getMonth() - i);
           const year = date.getFullYear();
           const month = String(date.getMonth() + 1).padStart(2, "0");
           const formattedDate = `${year}-${month}`;
-          const monthlyResponse = await fetchWithRetry(
+          return fetchData(
             `https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}&date=${formattedDate}`
-          );
-          monthlyResponses.push({ date: formattedDate, data: monthlyResponse });
-          //await delay(50); // Adding a delay between requests to prevent rate limiting
-        }
+          ).then((data) => ({ date: formattedDate, data }));
+        });
+
+        const monthlyResponses = await Promise.all(fetchMonthlyData);
 
         const monthlyCrimeCounts = monthlyResponses.map((response, index) => {
-          const date = new Date();
+          const date = new Date(latestDate);
           date.setMonth(date.getMonth() - index);
           const month = date.toLocaleString("default", { month: "short" });
           const year = date.getFullYear();
@@ -111,7 +104,7 @@ const CrimeStats = () => {
       }
     };
 
-    fetchData();
+    fetchDataForCharts();
   }, []);
 
   if (loading) return <div>Loading...</div>;
@@ -221,9 +214,9 @@ const CrimeStats = () => {
       },
       title: {
         display: true,
-        text: `Number of crimes in ${latestMonth}`,
+        text: `Number of Crimes as of the Latest Available Month (${latestMonth}) `,
         font: {
-          size: 30,
+          size: 25,
         },
         color: "white",
         padding: {
@@ -298,9 +291,9 @@ const CrimeStats = () => {
       },
       title: {
         display: true,
-        text: "Total Number of Crimes per Month for the Past Year",
+        text: "Total Number of Crimes per Month for the Past 6 Months",
         font: {
-          size: 30,
+          size: 25,
         },
         color: "white",
         padding: {
