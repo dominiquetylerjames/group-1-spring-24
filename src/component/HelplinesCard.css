@@ -1,0 +1,16 @@
+.helpline-card {
+    background-color: rgb(255, 102, 0);
+    text-align: center;
+    border: 3px solid #0c286a;
+}
+
+.helpline-card-title {
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+}
+
+.helpline-card-number {
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+    opacity: 0.5;
+}
