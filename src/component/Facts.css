@@ -1,10 +1,51 @@
-.facts {
-    display:contents;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 40px;
-    bottom: 20px;
-    width: 100%;
+/* Styles for the container holding all facts */
+.factsContainer {
+    text-align: center; /* Center align the content */
+    width: 80%; /* Set width to 80% of the parent container */
+    margin: auto; 
+    color: rgb(3, 48, 118); 
+}
+
+/* Styles for the heading */
+h2 {
+    text-decoration: underline; 
+}
+
+/* Styles for the container holding all facts */
+.allFacts {
+    text-align: center; 
+}
+
+/* Styles for individual fact paragraphs */
+.factParagraph {
+    box-shadow: 10px 10px 10px -10px #425eac; 
+    border-radius: 6px; 
+    padding: 30px; 
+    margin: 40px; 
+}
+
+/* Media query for screens up to 500px wide */
+@media only screen and (max-width: 500px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+    .factsContainer {
+        width: 100%; 
+        font-size: 1rem;
+    }
+}
+
+/* Media query for screens up to 350px wide */
+@media only screen and (max-width: 350px) {
+    h2 {
+        font-size: 1.1rem; 
+    }
+    .factsContainer {
+        font-size: 0.8rem; 
+        padding: 0px;
+    }
+    .factParagraph {
+        margin-top: 20px; 
+        padding: 10px; 
+    }
 }
