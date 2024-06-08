@@ -33,7 +33,7 @@ function App() {
               <Route path="/stats" element={<CrimeStats />} />
               <Route path="/map" element={<MapComponent />} />
               <Route path="/tips" element={<SafetyTips />} />
-              <Route path="/urgent-support" element={<UrgentSupport />}></Route>
+              <Route path="/urgent-support" element={<UrgentSupport />} />
             </Routes>
           </div>
         </header>
