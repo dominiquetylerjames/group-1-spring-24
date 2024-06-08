@@ -1,50 +1,65 @@
 .App-footer {
-    background-color: #128;
-    color: #fff;
-    padding: 20px 0;
-    width: 100%;
-    position: relative;       /* Keeping this fixed so it stays at the bottom - changed to relative so it remains at the bottom of the page*/
-    bottom: 0;             /* Making sure it is aligned at the bottom */
-    left: 0;
-  }
-  
-  .footer-container {
-    display: flex;          
-    justify-content: space-around;
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  background-color: rgb(3, 48, 118); /* Matching the theme colour */
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  width: 100%;
+  position: relative; /* Keeping this fixed so it stays at the bottom - changed to relative so it remains at the bottom of the page*/
+  bottom: 0; /* Making sure it is aligned at the bottom */
+  border-top: 3pt rgb(255, 102, 0) solid; /* Adds a thin orange line between the pale orange body and the navy footer*/
 }
-  
-  .footer-section {
-    flex: 1;               
-    padding: 10px;
-  }
-  
-  .footer-section h4 {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-  
-  .footer-section p,
-  .footer-section ul,
-  .footer-section a {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    color: #bbb;
-    text-decoration: none;
-  }
-  
-  .footer-section a:hover {
-    color: #fff;
-  }
-  
-  .footer-section ul {
-    padding-left: 0;
-  }
-  
-  .footer-section ul li {
-    margin-bottom: 10px;
-  }
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.footer-section {
+  flex: 1;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.footer-section p,
+.footer-section a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #bbb;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #fff;
+}
+
+#footer-list {
+  padding-left: 0;
+  column-count: 2;
+  list-style:none;
+}
+
+#footer-list li {
+  margin-bottom: 10px;
+  display:grid;
+}
+
+#about-us {
+  margin-bottom: 15px;
+}
+
+#contact-content {
+  display:flex;
+}
+
+#solidus {
+  padding-left: 15px;
+  padding-right: 15px;
+}
