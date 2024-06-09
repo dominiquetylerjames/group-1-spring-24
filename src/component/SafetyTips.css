@@ -1,26 +1,33 @@
-
+/* Styling for the first two paragraphs on the page */
 .SafetyTips h4{
-text-align: center;
-color: rgb(3, 48, 118);
+    text-align: center;
+    color: rgb(3, 48, 118);
+    padding-right: 115px;
+    padding-left: 115px;
+    padding-top: 35px;
 }
 
-.image-grid { /* Setting up the grid for images */
+/* Setting up the grid for images */
+.image-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Define the number of columns (2 in our case) */
     gap: 20px; /* Space between the images */
     max-width: 975px; /* The width of the grid to prevent images being all over the page */
     margin: 0 auto; /* Center the grid */
+    padding-bottom: 35px; /* Distance from the footer */
 }
 
-.image { /* The container area for the images */
+/* The container area for the images */
+.image { 
     position: relative;
-    height: 300px;
+    height: 325px; /* Set height of images */
     padding: 10px;
     border-radius: 20px; /* Curved edges */
     overflow: hidden; /* Making sure the curved edges don't clip */
 }
 
-.image img { /* Settings for the images themselves */
+/* Settings for the images themselves */
+.image img {
     width: 100%;
     height: 100%;
     display: block;
@@ -31,7 +38,8 @@ color: rgb(3, 48, 118);
     box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.3); /* Create image shadow */
 }
 
-.image .overlay { /* Settings for the hover effect overlay */
+/* Settings for the hover effect overlay */
+.image .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -48,15 +56,17 @@ color: rgb(3, 48, 118);
     text-align: center;
 }
 
+/* Add padding around the text. */
 .image .overlay .text {
-    padding: 15px; /* Add padding around the text. */
+    padding: 15px;
 }
 
+/* Setting up visibility of the hover effect */
 .image:hover .overlay {
-    opacity: 1; /* Setting up visibility of the hover effect */
+    opacity: 1;
 }
 
-/* Overlay for the illegal items */
+/* Hover colour for the illegal items */
 .image.red-overlay .overlay {
     background-color: rgba(105, 9, 9, 0.7); /* Different colour for images of the illegal items */
     color: rgb(248, 215, 194); /* Text colour */
@@ -64,6 +74,6 @@ color: rgb(3, 48, 118);
 
 /* Style for links within the overlay text */
 .image .overlay .text .overlay-link {
-    color: rgb(238, 146, 88); /* Change to the color you want */
-    text-decoration: underline; /* Optional: Add underline to links */
+    color: rgb(238, 146, 88); /* Link colour */
+    text-decoration: underline; /* Added underline to the links */
   }
