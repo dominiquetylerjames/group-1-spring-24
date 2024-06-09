@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import Navbar from './Navbar'
 import {BrowserRouter as Router} from "react-router-dom"
 import { createMemoryHistory } from 'history'
-import RoutesConfig from './RoutesConfig'
+import RoutesConfig from './RoutesConfig' /* This was added as part of getting the stats test to pass, kept in just in case */
 
 describe('Navbar', () => {
 
