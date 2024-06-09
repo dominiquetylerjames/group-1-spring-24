@@ -1,9 +1,10 @@
+// Import bootstrap CSS for styling
 import 'bootstrap/dist/css/bootstrap.min.css'
+// Import custom CSS for HelplinesCard component
 import './HelplinesCard.css';
-
 import React from 'react';
-import './HelplinesCard.css';
 
+// HelplinesCard component definition
 function HelplinesCard({ name, number }) {
     return (
         <div className="col">

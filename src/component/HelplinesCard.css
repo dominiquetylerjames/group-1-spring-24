@@ -1,14 +1,17 @@
+/* Styling for the Helplines Card */
 .helpline-card {
     background-color: rgb(255, 102, 0);
     text-align: center;
     border: 3px solid #0c286a;
 }
 
+/* Styling for the Helplines Card title */
 .helpline-card-title {
     font-size: 2rem;
     color: rgb(0, 0, 0);
 }
 
+/* Styling for the Helplines Card number */
 .helpline-card-number {
     font-size: 2rem;
     color: rgb(0, 0, 0);

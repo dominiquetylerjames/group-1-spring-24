@@ -1,8 +1,8 @@
+// Import bootstrap CSS for styling
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './UrgentSupport';
-import './WomensAidCard.css'
 
-function WomensAidCard ({ image, info, address, helpline, websiteSource }) {
+// WomensAidCard component definition
+function WomensAidCard ({ image, info, helpline, websiteSource }) {
     return (
         <div className="col">
             <div className="card h-100 rounded-3">

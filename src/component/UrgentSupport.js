@@ -1,11 +1,16 @@
+// Importing components
 import PoliceStationsCard from './PoliceStationsCard'
 import HelplinesCard from './HelplinesCard'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './UrgentSupport.css'
 import WomensAidCard from './WomensAidCard';
+// Import bootstrap CSS for styling
+import 'bootstrap/dist/css/bootstrap.min.css';
+// Import custom CSS for Urgent Support
+import './UrgentSupport.css'
 
+// Component definition
 function UrgentSupport () {
 
+    // Data objects for police stations, helplines and women's aid
     const cardiffCentral = {
         name: "Cardiff Central Police Station",
         openingTimes: "9am-5pm, Monday-Sunday",
@@ -25,7 +30,7 @@ function UrgentSupport () {
     }
 
     const cardiffWomensAid = {
-        name: "Cardiff Womens Aid",
+        name: "Cardiff Women's Aid",
         number: "029 2046 0566"
     }
 
@@ -79,10 +84,11 @@ function UrgentSupport () {
         websiteSource: "https://bawso.org.uk/en/services/"
     }
 
+    // Component rendering
     return (
         <div className="urgentSupportPage">
 
-            <p id='intro'>Its important to know that there are emergency services there to help women in need. < br/> Below are helplines, womens aid charities and police stations that you can turn to if you're in need of urgent support.</p>
+            <p id='intro'>Its important to know that there are emergency services there to help women in need. < br/> Below are helplines, women's aid charities and police stations that you can turn to if you're in need of urgent support.</p>
 
             <h1>24/7 Helplines</h1>
 
@@ -127,12 +133,11 @@ function UrgentSupport () {
 
             <h1>Women's Aid</h1>
 
-            <div className="row row-cols-1 row-cols-md-3 g-4">
+            <div className="row row-cols-1 row-cols-md-3 g-4 mb-5">
             <WomensAidCard 
             name={ shelterCymru.name } 
             image= { shelterCymru.image }
             info={ shelterCymru.info }
-            address={ shelterCymru.address }
             helpline={ shelterCymru.helpline }
             websiteSource={ shelterCymru.websiteSource }
             websiteAddress={ shelterCymru.websiteAddress }
@@ -142,7 +147,6 @@ function UrgentSupport () {
             name={ cardiffWomensCentre.name } 
             image= { cardiffWomensCentre.image }
             info={ cardiffWomensCentre.info }
-            address={ cardiffWomensCentre.address }
             helpline={ cardiffWomensCentre.helpline }
             websiteSource={ cardiffWomensCentre.websiteSource }
             websiteAddress={ cardiffWomensCentre.websiteAddress }
@@ -152,7 +156,6 @@ function UrgentSupport () {
             name={ riseCardiff.name } 
             image= { riseCardiff.image }
             info={ riseCardiff.info }
-            address={ riseCardiff.address }
             helpline={ riseCardiff.helpline }
             websiteSource={ riseCardiff.websiteSource }
             websiteAddress={ riseCardiff.websiteAddress }
@@ -162,7 +165,6 @@ function UrgentSupport () {
             name={ bawsoWomensAid.name } 
             image= { bawsoWomensAid.image }
             info={ bawsoWomensAid.info }
-            address={ bawsoWomensAid.address }
             helpline={ bawsoWomensAid.helpline }
             websiteSource={ bawsoWomensAid.websiteSource }
             websiteAddress={ bawsoWomensAid.websiteAddress }
@@ -172,7 +174,6 @@ function UrgentSupport () {
             name={ liveFearFreeWomensAid.name } 
             image= { liveFearFreeWomensAid.image }
             info={ liveFearFreeWomensAid.info }
-            address={ liveFearFreeWomensAid.address }
             helpline={ liveFearFreeWomensAid.helpline }
             websiteSource={ liveFearFreeWomensAid.websiteSource }
             websiteAddress={ liveFearFreeWomensAid.websiteAddress }
