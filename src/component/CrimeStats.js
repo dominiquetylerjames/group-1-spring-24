@@ -15,6 +15,7 @@ import { PolarArea, Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import "./CrimeStats.css";
 
+// Register the Chart.js components
 ChartJS.register(
   RadialLinearScale,
   ArcElement,
@@ -28,12 +29,14 @@ ChartJS.register(
 );
 
 const CrimeStats = () => {
+  // Define state variables
   const [crimes, setCrimes] = useState([]);
   const [monthlyCrimes, setMonthlyCrimes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [latestMonth, setLatestMonth] = useState("");
 
+  // Function to fetch data from a given URL
   const fetchData = async (url) => {
     try {
       const response = await axios.get(url);
@@ -47,6 +50,7 @@ const CrimeStats = () => {
     }
   };
 
+  // useEffect hook to fetch crime data
   useEffect(() => {
     const latitude = 51.4816;
     const longitude = -3.1791;
@@ -82,8 +86,10 @@ const CrimeStats = () => {
           ).then((data) => ({ date: formattedDate, data }));
         });
 
+        // Wait for all monthly data fetches to complete
         const monthlyResponses = await Promise.all(fetchMonthlyData);
 
+        // Process the monthly crime data
         const monthlyCrimeCounts = monthlyResponses.map((response, index) => {
           const date = new Date(latestDate);
           date.setMonth(date.getMonth() - index);
@@ -107,6 +113,8 @@ const CrimeStats = () => {
     fetchDataForCharts();
   }, []);
 
+  // Show loading or error messages if applicable
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -116,6 +124,7 @@ const CrimeStats = () => {
     return acc;
   }, {});
 
+  // Function to format crime category labels
   const formatLabel = (label) => {
     return label
       .split("-")
@@ -123,8 +132,10 @@ const CrimeStats = () => {
       .join(" ");
   };
 
+  // Format the crime category labels
   const formattedLabels = Object.keys(crimeCategories).map(formatLabel);
 
+  // Define a color palette for the charts
   const colorPalette = [
     "rgba(255, 99, 132, 0.5)", // Red
     "rgba(54, 162, 235, 0.5)", // Blue
@@ -144,6 +155,7 @@ const CrimeStats = () => {
     "rgba(245, 245, 220, 0.5)", // Beige
   ];
 
+  // Function to generate a color palette with a specified number of colors
   const getColorPalette = (numColors) => {
     if (numColors <= colorPalette.length) {
       return colorPalette.slice(0, numColors);
@@ -156,8 +168,10 @@ const CrimeStats = () => {
     }
   };
 
+  // Get the appropriate color palette for the chart
   const colors = getColorPalette(formattedLabels.length);
 
+  // Define data for the PolarArea chart
   const data = {
     labels: formattedLabels,
     datasets: [
@@ -170,6 +184,7 @@ const CrimeStats = () => {
     ],
   };
 
+  // Define options for the PolarArea chart
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -238,6 +253,7 @@ const CrimeStats = () => {
     },
   };
 
+  // Define data for the Bar chart
   const monthlyData = {
     labels: monthlyCrimes.map((item) => item.month),
     datasets: [
@@ -251,6 +267,7 @@ const CrimeStats = () => {
     ],
   };
 
+  // Define options for the Bar chart
   const monthlyOptions = {
     responsive: true,
     maintainAspectRatio: false,

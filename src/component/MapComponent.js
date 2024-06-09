@@ -1,25 +1,23 @@
 import React, { useEffect, useState, useRef } from "react";
-import {
-  GoogleMap,
-  Marker,
-  useLoadScript,
-  HeatmapLayer,
-} from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, HeatmapLayer } from "@react-google-maps/api";
 import axios from "axios";
 import MarkerClustererPlus from "marker-clusterer-plus";
 import "./MapComponent.css";
 
+// Coordinates for Cardiff city center
 const center = {
-  lat: 51.4816, // Latitude for Cardiff
-  lng: -3.1791, // Longitude for Cardiff
+  lat: 51.4816,
+  lng: -3.1791,
 };
 
 const MapComponent = () => {
+  // Load the Google Maps API script
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDNhYmHsA5MyUQbkoY8zIKCBAgoVJuSc80",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: ["places", "visualization"],
   });
 
+  // Define state variables
   const [crimeData, setCrimeData] = useState([]);
   const [postcode, setPostcode] = useState("");
   const [mapCenter, setMapCenter] = useState(center);
@@ -29,12 +27,14 @@ const MapComponent = () => {
   const mapRef = useRef(null);
   const clustererRef = useRef(null);
 
+  // Fetch crime data when the map script is loaded
   useEffect(() => {
     if (isLoaded) {
       fetchCrimeData(center.lat, center.lng);
     }
   }, [isLoaded]);
 
+  // Update map markers and clusterer when crime data changes
   useEffect(() => {
     if (mapRef.current && crimeData.length > 0) {
       const markers = crimeData.map((crime) => {
@@ -61,6 +61,7 @@ const MapComponent = () => {
           "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
       });
 
+      // Change marker icons on cluster hover
       clustererRef.current.addListener("mouseover", (cluster) => {
         handleClusterHover(cluster);
         cluster.getMarkers().forEach((marker) => {
@@ -74,6 +75,7 @@ const MapComponent = () => {
         });
       });
 
+      // Reset marker icons on cluster hover out
       clustererRef.current.addListener("mouseout", (cluster) => {
         setSelectedClusterData(null);
         cluster.getMarkers().forEach((marker) => {
@@ -89,6 +91,7 @@ const MapComponent = () => {
     }
   }, [crimeData]);
 
+  // Format crime categories for better readability
   const formatCrimeCategory = (category) => {
     switch (category) {
       case "other-theft":
@@ -116,6 +119,7 @@ const MapComponent = () => {
     }
   };
 
+  // Fetch crime data from the API
   const fetchCrimeData = async (lat, lng) => {
     try {
       const response = await axios.get(
@@ -131,11 +135,12 @@ const MapComponent = () => {
     }
   };
 
+  // Handle the postcode search form submission
   const handleSearch = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${postcode}&key=AIzaSyDNhYmHsA5MyUQbkoY8zIKCBAgoVJuSc80`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${postcode}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
       );
       const location = response.data.results[0].geometry.location;
       setMapCenter({ lat: location.lat, lng: location.lng });
@@ -145,28 +150,32 @@ const MapComponent = () => {
     }
   };
 
+  // Handle zoom level changes
   const handleZoomChanged = () => {
     if (mapRef.current) {
       setZoom(mapRef.current.getZoom());
     }
   };
 
+  // Handle map load event
   const handleMapLoad = (map) => {
     mapRef.current = map;
   };
 
+  // Handle marker click event
   const handleMarkerClick = (crime) => {
     setSelectedCrime(crime);
     setSelectedClusterData(null); // Clear cluster data when an individual crime is selected
   };
 
+  // Handle cluster hover event
   const handleClusterHover = (cluster) => {
     const markers = cluster.getMarkers();
     const crimesInCluster = markers.map((marker) =>
       crimeData.find(
         (crime) =>
-          crime.location.latitude == marker.position.lat() &&
-          crime.location.longitude == marker.position.lng()
+          crime.location.latitude === marker.position.lat() &&
+          crime.location.longitude === marker.position.lng()
       )
     );
 
@@ -192,6 +201,7 @@ const MapComponent = () => {
     setSelectedCrime(null); // Clear individual crime data when a cluster is selected
   };
 
+  // Display loading or error message if applicable
   if (loadError) return <div>Error loading maps</div>;
   if (!isLoaded) return <div>Loading Maps...</div>;
 
