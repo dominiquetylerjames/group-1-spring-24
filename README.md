@@ -19,7 +19,7 @@ Hi! I am Anna and my goal is to enter the world of tech and become a full-stack 
 I'm Catrin, I love playing video games, board games, and D&D, and I enjoy making jewellery in my spare time. I really enjoy working on the front end with HTML and CSS (and I don't mind a bit of Python). I'm hoping to be able to build my own sites for personal use as well as one day be a web/app/game developer - freelance or otherwise.
 
 #### Dominique:
-
+I'm Dominique, and alongside learning to code I'm currently studying for a PhD in Music. In my free time I love to go outdoors, and my favourite hobbies are climbing and hiking. I enjoy front end development the most, and hope to become a web developer in the future.
 
 #### Eleanor:
 Hello, I am Eleanor. I love to travel. I enjoy being creative and will often be designing and making items using my cricut. I want to use the coding I have learnt to create websites for my friends and family members business'. I hope to be succesful in achieving a junior position as a full stack developer and continue to gain more knowledge in the various coding languages I have been taught.
