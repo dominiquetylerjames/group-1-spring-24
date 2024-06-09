@@ -12,7 +12,7 @@ import SafetyTips from "./component/SafetyTips";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App" data-testid="app-div">
         <header className="App-header">
           <Navbar />
           <div className="content">
