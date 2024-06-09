@@ -11,8 +11,6 @@ function Facts() {
     { id: 4, text: 'Butetown, known for its scenic Bay area, has a surprisingly high crime rate of 277.8 crimes per 1000 people, with significant issues in violent crime, antisocial behaviour, shoplifting, and drug offences.' },
     { id: 5, text: 'South Wales Police employs facial recognition technology to prevent and identify crime while safeguarding vulnerable individuals. This technology is commonly deployed at public gatherings and crowded areas to identify individuals of interest, triggering an alert upon detecting a potential match.' },
     { id: 6, text: 'Plain clothes officers patrol the city centre to prevent violence against women and girls by targeting suspicious individuals and those displaying unwanted sexual behaviour.' },
-    { id: 7, text: 'It takes about 5-10 minutes to report a crime on the South Wales Police website directly on this link. There is a \'Leave this site\' button that closes the site and opens Google if you need to or are worried someone may be watching you. Your form won\'t be saved or sent.' },
-    { id: 8, text: 'If you want to report anonymously, you can contact Crimestoppers, either online or on their free helpline 0800555111.' },
   ];
 
   // Use state hook to manage the facts data
