@@ -210,6 +210,8 @@ const CrimeStats = () => {
           font: {
             size: 15,
             color: "white",
+            family: 'itim',
+            
           },
           color: "white",
         },
@@ -232,6 +234,7 @@ const CrimeStats = () => {
         text: `Number of Crimes as of the Latest Available Month (${latestMonth}) `,
         font: {
           size: 25,
+          family: 'itim',
         },
         color: "white",
         padding: {
@@ -278,7 +281,8 @@ const CrimeStats = () => {
         },
         ticks: {
           font: {
-            size: 14,
+            size: 16,
+            family: 'itim',
           },
           color: "white",
         },
@@ -289,7 +293,8 @@ const CrimeStats = () => {
         },
         ticks: {
           font: {
-            size: 14,
+            size: 16,
+            family: 'itim',
           },
           color: "white",
         },
@@ -302,6 +307,7 @@ const CrimeStats = () => {
           font: {
             size: 15,
             color: "white",
+            family: 'itim',
           },
           color: "white",
         },
@@ -311,6 +317,7 @@ const CrimeStats = () => {
         text: "Total Number of Crimes per Month for the Past 6 Months",
         font: {
           size: 25,
+          family: 'itim',
         },
         color: "white",
         padding: {
@@ -328,7 +335,6 @@ const CrimeStats = () => {
   return (
     <div className="p-4">
       <h1 className="title">Crime Statistics for Cardiff</h1>
-
       <div className="chart-container">
         <PolarArea data={data} options={options} />
       </div>
