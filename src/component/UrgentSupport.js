@@ -1,11 +1,16 @@
+// Importing components
 import PoliceStationsCard from './PoliceStationsCard'
 import HelplinesCard from './HelplinesCard'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './UrgentSupport.css'
 import WomensAidCard from './WomensAidCard';
+// Import bootstrap CSS for styling
+import 'bootstrap/dist/css/bootstrap.min.css';
+// Import custom CSS for Urgent Support
+import './UrgentSupport.css'
 
+// Component definition
 function UrgentSupport () {
 
+    // Data objects for police stations, helplines and women's aid
     const cardiffCentral = {
         name: "Cardiff Central Police Station",
         openingTimes: "9am-5pm, Monday-Sunday",
@@ -25,7 +30,7 @@ function UrgentSupport () {
     }
 
     const cardiffWomensAid = {
-        name: "Cardiff Womens Aid",
+        name: "Cardiff Women's Aid",
         number: "029 2046 0566"
     }
 
@@ -42,7 +47,6 @@ function UrgentSupport () {
     const shelterCymru = {
         image: "/shelterCymru.png",
         info: "Confidential emergency accomodation for women who have become homeless due to abuse",
-        address: "Cardiff Central Library, The Hayes, Cardiff, CF10 1FL",
         helpline: "08000 495 495",
         websiteSource: "https://sheltercymru.org.uk/housing-advice/finding-a-place-to-live/emergency-accommodation/womens-refuge/"
     }
@@ -50,7 +54,6 @@ function UrgentSupport () {
     const riseCardiff = {
         image: "/riseCardiff.png",
         info: "Support regarding domestic abuse, violence and sexual violence, provided at their Resource and Recovery centre",
-        address: "RISE One Stop Shop, Cardiff Royal Infirmary, Block 24, Longcross Street, Cardiff, CF24 OJT (open for drop-ins)",
         helpline: "029 2046 0566",
         websiteSource: "https://rise-cardiff.cymru/"
     }
@@ -58,7 +61,6 @@ function UrgentSupport () {
     const cardiffWomensCentre = {
         image: "/cardiffWomensCentre.png",
         info: "Events and safe space meetings including a feminist library, drop-in sessions, group work and counselling",
-        address: "Cardiff Women's Centre, 50 Meteor Street, Adamsdown, Cardiff, CF24 0HE",
         helpline: "029 2046 0566",
         websiteSource: "https://cardiffwomenscentre.org.uk/"
     }
@@ -66,7 +68,6 @@ function UrgentSupport () {
     const liveFearFreeWomensAid = {
         image: "/liveFearFree.png",
         info: "Advice and support regarding accomodation, legal advice, finances, health and wellbeing and counselling",
-        address: "Cardiff Women's Centre, 50 Meteor Street, Adamsdown, Cardiff, CF24 0HE",
         helpline: "0808 8010 800 or text 0786 0077 333",
         websiteSource: "https://www.gov.wales/live-fear-free"
     }
@@ -74,15 +75,15 @@ function UrgentSupport () {
     const bawsoWomensAid = {
         image: "/bawso.png",
         info: "All forms of support for Black Minority Ethnic and migrant victims, including refuges and safe houses",
-        address: "Bawso Main Office, Unit 4 Sovereign Quay, Havannah Street, Cardiff, CF10 5SF",
         helpline: "0800 7318 147",
         websiteSource: "https://bawso.org.uk/en/services/"
     }
 
+    // Component rendering
     return (
         <div className="urgentSupportPage">
 
-            <p id='intro'>Its important to know that there are emergency services there to help women in need. < br/> Below are helplines, womens aid charities and police stations that you can turn to if you're in need of urgent support.</p>
+            <p id='intro'>Its important to know that there are emergency services there to help women in need. < br/> Below are helplines, women's aid charities and police stations that you can turn to if you're in need of urgent support.</p>
 
             <h1>24/7 Helplines</h1>
 
@@ -127,55 +128,45 @@ function UrgentSupport () {
 
             <h1>Women's Aid</h1>
 
-            <div className="row row-cols-1 row-cols-md-3 g-4">
+            <div className="row row-cols-1 row-cols-md-3 g-4 mb-5">
             <WomensAidCard 
             name={ shelterCymru.name } 
             image= { shelterCymru.image }
             info={ shelterCymru.info }
-            address={ shelterCymru.address }
             helpline={ shelterCymru.helpline }
             websiteSource={ shelterCymru.websiteSource }
-            websiteAddress={ shelterCymru.websiteAddress }
             />
 
             <WomensAidCard 
             name={ cardiffWomensCentre.name } 
             image= { cardiffWomensCentre.image }
             info={ cardiffWomensCentre.info }
-            address={ cardiffWomensCentre.address }
             helpline={ cardiffWomensCentre.helpline }
             websiteSource={ cardiffWomensCentre.websiteSource }
-            websiteAddress={ cardiffWomensCentre.websiteAddress }
             />
 
             <WomensAidCard 
             name={ riseCardiff.name } 
             image= { riseCardiff.image }
             info={ riseCardiff.info }
-            address={ riseCardiff.address }
             helpline={ riseCardiff.helpline }
             websiteSource={ riseCardiff.websiteSource }
-            websiteAddress={ riseCardiff.websiteAddress }
             />
 
             <WomensAidCard 
             name={ bawsoWomensAid.name } 
             image= { bawsoWomensAid.image }
             info={ bawsoWomensAid.info }
-            address={ bawsoWomensAid.address }
             helpline={ bawsoWomensAid.helpline }
             websiteSource={ bawsoWomensAid.websiteSource }
-            websiteAddress={ bawsoWomensAid.websiteAddress }
             />
 
             <WomensAidCard 
             name={ liveFearFreeWomensAid.name } 
             image= { liveFearFreeWomensAid.image }
             info={ liveFearFreeWomensAid.info }
-            address={ liveFearFreeWomensAid.address }
             helpline={ liveFearFreeWomensAid.helpline }
             websiteSource={ liveFearFreeWomensAid.websiteSource }
-            websiteAddress={ liveFearFreeWomensAid.websiteAddress }
             />
             </div>
 

@@ -1,21 +1,28 @@
+/* Styling for the Urgent Support page */
 .urgentSupportPage {
     margin-left: 20px;
     margin-right: 20px;
     padding-bottom: 35px;
 }
 
+/* Styling for the images */
 .fixed-height-img {
+    /* Sets the image height to 200px */
     height: 200px; 
+    /* Scales the image to fit within its container while preserving its aspect ratio */
     object-fit: contain; 
+    /* Sets the image width to 100% of its container */
     width: 100%;
 }
 
+/* Styling for the introductory paragraph */
 #intro {
     margin-top: 50px; /* Optional: Add margin to push it further down the page */
     margin-bottom: 50px;
     text-align: center;
 }
 
+/* Styling for all h1 elements */
 h1 {
     text-align: center;
 }
