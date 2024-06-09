@@ -63,8 +63,8 @@ const HoverEffect = ({ imageSrc, altText, overlayText, redOverlay, link }) => {
   
     return (
       <div className="SafetyTips">
-        <h4>Preparation is a key when it comes to safety. And there are of course many precautions you can take whenever you leave your home such as not walking outside alone after dark, remain aware of your surroundings, keep your loved ones aware where you are if you go outside or even setting up message codes for dangerous situations and taking self-defense classes.</h4>
-        <h4>For the cases where all prevention fails, it is important to have have a last minute option which can mean all the difference when it comes to your safe escape from a dangerous situation. Below are multiple options for items that can help you and some which cannot. Hover over each image to see the description and, if available, also a link.</h4>
+        <p>Preparation is a key when it comes to safety. And there are of course many precautions you can take whenever you leave your home such as not walking outside alone after dark, remain aware of your surroundings, keep your loved ones aware where you are if you go outside or even setting up message codes for dangerous situations and taking self-defense classes.</p>
+        <p>For the cases where all prevention fails, it is important to have have a last minute option which can mean all the difference when it comes to your safe escape from a dangerous situation. Below are multiple options for items that can help you and some which cannot. Hover over each image to see the description and, if available, also a link.</p>
         <div className="image-grid">
           {images.map((image, index) => (
             <HoverEffect
