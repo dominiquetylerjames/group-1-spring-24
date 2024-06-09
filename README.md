@@ -25,6 +25,7 @@ I'm Catrin, I love playing video games, board games, and D&D, and I enjoy making
 
 
 #### Karolina:
+I'm Karolina and I'm a bookworm and a gamer with soft spot for sports. Because I am constantly seeking to learn new things and ways to challenge myself, I'm hoping to explore various sides of IT, which is why I chose fullstack developer stream to study. But I do prefer front end at the end of the day. My current goal is to progress further within the company I already work for in an IT entry level position.
 
 
 #### Linda:
