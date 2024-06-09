@@ -1,6 +1,7 @@
+// Import bootstrap CSS for styling
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './PoliceStationsCard.css';
 
+// PoliceStationsCard component definition
 function PoliceStationsCard ({ name, openingTimes, address}) {
     return (
         <div className="col">
