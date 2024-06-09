@@ -29,6 +29,7 @@ I'm Karolina and I'm a bookworm and a gamer with soft spot for sports. Because I
 
 
 #### Linda:
+Hiya, I'm Linda!I just finished my Masters in Finance, and rounding up this CFG program as well. I have always been fascinated by how websites work and the intricate coding that went into it. I like Frontend a lot, because I like seeing the visual result of my code. In my spare time, I like to drum and play games. 
 
 
 ### About the app
