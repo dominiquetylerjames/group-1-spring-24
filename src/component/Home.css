@@ -19,6 +19,9 @@
 .home-content {
   position: relative;
   padding-bottom: 50px;
+  color: rgb(3, 48, 118); /* Sets the heading font to the theme's navy colour without affecting other h1 tags */
+  max-width: 75vw;
+  font-size: smaller;
   /* top: calc(100vh - (553.217px * 1.5));*/ /* Disabled due to screen size issues */
 }
 
@@ -42,11 +45,6 @@
 
 #arrow:hover {
   opacity: 0.8;
-}
-
-.home-content { /* Sets the heading font to the theme's navy colour without affecting other h1 tags */
-  color: rgb(3, 48, 118);
-  max-width: 75vw;
 }
 
 p { /* Sets the default paragraph font to the theme's navy colour */
