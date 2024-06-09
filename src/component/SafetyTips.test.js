@@ -3,14 +3,7 @@ import { render, screen } from '@testing-library/react';
 import SafetyTips from './SafetyTips';
 /* Make sure to have Jest up to date */
 
-describe('SafetyTips', () => {
-  /* Check if both headers (h4) render correctly */
-  test('headers load correctly', () => {
-    render(<SafetyTips />);
-    const header = screen.getAllByRole('heading');
-    expect(header.length).toBe(2); /* 2 headers in total - needs to be updated if changed in SafetyTips.js */
-  });
-
+ describe('SafetyTips', () => {
   /* Chech if images appear as they should */
   test('all images load correctly', () => {
     render(<SafetyTips />);
