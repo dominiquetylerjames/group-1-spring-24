@@ -171,13 +171,15 @@ const MapComponent = () => {
   // Handle cluster hover event
   const handleClusterHover = (cluster) => {
     const markers = cluster.getMarkers();
-    const crimesInCluster = markers.map((marker) =>
-      crimeData.find(
-        (crime) =>
-          crime.location.latitude === marker.position.lat() &&
-          crime.location.longitude === marker.position.lng()
+    const crimesInCluster = markers
+      .map((marker) =>
+        crimeData.find(
+          (crime) =>
+            crime.location.latitude === marker.position.lat() &&
+            crime.location.longitude === marker.position.lng()
+        )
       )
-    );
+      .filter((crime) => crime !== undefined); // Filter out undefined values
 
     const aggregatedData = crimesInCluster.reduce((acc, crime) => {
       if (!acc[crime.category]) {
@@ -200,7 +202,6 @@ const MapComponent = () => {
     });
     setSelectedCrime(null); // Clear individual crime data when a cluster is selected
   };
-
   // Display loading or error message if applicable
   if (loadError) return <div>Error loading maps</div>;
   if (!isLoaded) return <div>Loading Maps...</div>;
