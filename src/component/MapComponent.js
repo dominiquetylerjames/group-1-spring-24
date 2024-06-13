@@ -171,21 +171,36 @@ const MapComponent = () => {
   // Handle cluster hover event
   const handleClusterHover = (cluster) => {
     const markers = cluster.getMarkers();
+    console.log("Markers in cluster:", markers); // Debugging: log markers
+
     const crimesInCluster = markers
       .map((marker) =>
         crimeData.find(
           (crime) =>
-            crime.location.latitude === marker.position.lat() &&
-            crime.location.longitude === marker.position.lng()
+            parseFloat(crime.location.latitude) ===
+              marker.getPosition().lat() &&
+            parseFloat(crime.location.longitude) === marker.getPosition().lng()
         )
       )
       .filter((crime) => crime !== undefined); // Filter out undefined values
 
+    console.log("Crimes in cluster:", crimesInCluster); // Debugging: log crimes in cluster
+
+    if (crimesInCluster.length === 0) {
+      setSelectedClusterData({
+        total: 0,
+        details: [],
+      });
+      return;
+    }
+
     const aggregatedData = crimesInCluster.reduce((acc, crime) => {
-      if (!acc[crime.category]) {
-        acc[crime.category] = 0;
+      if (crime && crime.category) {
+        if (!acc[crime.category]) {
+          acc[crime.category] = 0;
+        }
+        acc[crime.category]++;
       }
-      acc[crime.category]++;
       return acc;
     }, {});
 
@@ -200,8 +215,10 @@ const MapComponent = () => {
       total: crimesInCluster.length,
       details: crimeDetails,
     });
+
     setSelectedCrime(null); // Clear individual crime data when a cluster is selected
   };
+
   // Display loading or error message if applicable
   if (loadError) return <div>Error loading maps</div>;
   if (!isLoaded) return <div>Loading Maps...</div>;
